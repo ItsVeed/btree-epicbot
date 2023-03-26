@@ -1,6 +1,7 @@
 package btree.subtrees;
 
 import btree.Task;
+import btree.actions.DepositInvAction;
 import btree.actions.OpenBank;
 import btree.actions.WalkToNearestBank;
 import btree.composites.Selector;
@@ -17,7 +18,6 @@ public class DepositInventory extends Subtree {
         super(script);
 
         this.child = new Sequence(script,
-                        new Inverter(script, new HasInventorySpace(script)),
                         new Selector(script,
                                 new BankIsReachable(script),
                                 new WalkToNearestBank(script)
@@ -26,7 +26,7 @@ public class DepositInventory extends Subtree {
                                 new BankIsOpen(script),
                                 new OpenBank(script)
                         ),
-                        new DepositInventory(script)
+                        new DepositInvAction(script)
                     );
 
     }
