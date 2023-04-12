@@ -23,11 +23,9 @@ public class Selector extends Composite {
     public STATUS run() {
         for (Task task : children) {
             if (task.run() == SUCCEEDED) {
-                System.out.println("Succeded");
                 return SUCCEEDED;
             }
         }
-        System.out.println("Failed");
         return FAILED;
     }
 }

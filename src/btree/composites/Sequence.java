@@ -24,11 +24,9 @@ public class Sequence extends Composite{
     public STATUS run() {
         for (Task task : children) {
             if (task.run() == FAILED) {
-                System.out.println("Failed");
                 return FAILED;
             }
         }
-        System.out.println("Succeded");
         return SUCCEEDED;
     }
 }
